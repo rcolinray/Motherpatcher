@@ -1,0 +1,281 @@
+<svg width="467px" height="199px" viewBox="0 0 467 199" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+
+  <svg:g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+
+    <svg:g app-knob
+           type="offset"
+           [value]="value.frequency"
+           (change)="rotateKnob('frequency', $event)"
+           transform="translate(30.000000, 16.000000)">
+    </svg:g>
+
+    <svg:g app-switch
+           [value]="value.vcoWave"
+           (click)="toggle('vcoWave')"
+           transform="translate(79.000000, 25.000000)">
+    </svg:g>
+
+    <svg:g app-knob
+           type="offset"
+           [value]="value.pulseWidth"
+           (change)="rotateKnob('pulseWidth', $event)"
+           transform="translate(116.000000, 16.000000)">
+    </svg:g>
+
+    <svg:g app-knob
+           [value]="value.mix"
+           (change)="rotateKnob('mix', $event)"
+           transform="translate(159.000000, 18.000000)">
+    </svg:g>
+
+    <svg:g app-knob
+           [value]="value.cutoff"
+           (change)="rotateKnob('cutoff', $event)"
+           transform="translate(211.000000, 18.000000)">
+    </svg:g>
+
+    <svg:g app-knob
+           [value]="value.resonance"
+           (change)="rotateKnob('resonance', $event)"
+           transform="translate(263.000000, 18.000000)">
+    </svg:g>
+
+    <svg:g app-switch
+           [value]="value.vcaMode"
+           (click)="toggle('vcaMode')"
+           transform="translate(305.000000, 25.000000)">
+    </svg:g>
+
+    <svg:g app-knob
+           [value]="value.volume"
+           (change)="rotateKnob('volume', $event)"
+           transform="translate(332.000000, 18.000000)">
+    </svg:g>
+
+    <svg:g app-knob
+           [value]="value.glide"
+           (change)="rotateKnob('glide', $event)"
+           transform="translate(30.000000, 61.000000)">
+    </svg:g>
+
+    <svg:g app-switch
+           [value]="value.vcoModSource"
+           (click)="toggle('vcoModSource')"
+           transform="translate(79.000000, 68.000000)">
+    </svg:g>
+
+    <svg:g app-knob
+           [value]="value.vcoModAmount"
+           (change)="rotateKnob('vcoModAmount', $event)"
+           transform="translate(116.000000, 61.000000)">
+    </svg:g>
+
+    <svg:g app-switch
+           [value]="value.vcoModDest"
+           (click)="toggle('vcoModDest')"
+           transform="translate(165.000000, 68.000000)">
+    </svg:g>
+
+    <svg:g app-switch
+           [value]="value.vcfMode"
+           (click)="toggle('vcfMode')"
+           transform="translate(208.000000, 68.000000)">
+    </svg:g>
+
+    <svg:g app-switch
+           [value]="value.vcfModSource"
+           (click)="toggle('vcfModSource')"
+           transform="translate(251.000000, 68.000000)">
+    </svg:g>
+
+    <svg:g app-knob
+           [value]="value.vcfModAmount"
+           (change)="rotateKnob('vcfModAmount', $event)"
+           transform="translate(289.000000, 61.000000)">
+    </svg:g>
+
+    <svg:g app-switch
+           [value]="value.vcfModPolarity"
+           (click)="toggle('vcfModPolarity')"
+           transform="translate(337.000000, 68.000000)">
+    </svg:g>
+
+    <svg:g app-knob
+           type="offset"
+           [value]="value.tempo"
+           (change)="rotateKnob('tempo', $event)"
+           transform="translate(58.000000, 102.000000)">
+    </svg:g>
+
+    <svg:g app-knob
+           type="offset"
+           [value]="value.lfoRate"
+           (change)="rotateKnob('lfoRate', $event)"
+           transform="translate(116.000000, 102.000000)">
+    </svg:g>
+
+    <svg:g app-switch
+           [value]="value.lfoWave"
+           (click)="toggle('lfoWave')"
+           transform="translate(165.000000, 111.000000)">
+    </svg:g>
+
+    <svg:g app-knob
+           [value]="value.attack"
+           (change)="rotateKnob('attack', $event)"
+           transform="translate(202.000000, 104.000000)">
+    </svg:g>
+
+    <svg:g app-switch
+           [value]="value.sustain"
+           (click)="toggle('sustain')"
+           transform="translate(251.000000, 111.000000)">
+    </svg:g>
+
+    <svg:g app-knob
+           [value]="value.decay"
+           (change)="rotateKnob('decay', $event)"
+           transform="translate(289.000000, 104.000000)">
+    </svg:g>
+
+    <svg:g app-knob
+           [value]="value.vcMix"
+           (change)="rotateKnob('vcMix', $event)"
+           transform="translate(332.000000, 104.000000)">
+    </svg:g>
+
+    <svg:g app-octave-button
+           (click)="octaveUp()"
+           type="up"
+           transform="translate(159.000000, 157.000000)">
+    </svg:g>
+
+    <svg:g app-octave-button
+           (click)="octaveDown()"
+           type="down"
+           transform="translate(134.000000, 157.000000)">
+    </svg:g>
+
+    <svg:g app-octave-led on="1" [value]="value.octave" transform="translate(126.000000, 143.000000)">
+    </svg:g>
+
+    <svg:g app-octave-led on="2" [value]="value.octave" transform="translate(133.000000, 143.000000)">
+    </svg:g>
+
+    <svg:g app-octave-led on="3" [value]="value.octave" transform="translate(140.000000, 143.000000)">
+    </svg:g>
+
+    <svg:g app-octave-led on="4" [value]="value.octave" transform="translate(147.000000, 143.000000)">
+    </svg:g>
+
+    <svg:g app-octave-led on="5" [value]="value.octave" transform="translate(154.000000, 143.000000)">
+    </svg:g>
+
+    <svg:g app-octave-led on="6" [value]="value.octave" transform="translate(161.000000, 143.000000)">
+    </svg:g>
+
+    <svg:g app-octave-led on="7" [value]="value.octave" transform="translate(168.000000, 143.000000)">
+    </svg:g>
+
+    <svg:g app-octave-led on="8" [value]="value.octave" transform="translate(176.000000, 143.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point transform="translate(377.000000, 22.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point transform="translate(397.000000, 22.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point transform="translate(417.000000, 22.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point type="output" transform="translate(438.000000, 22.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point type="output" transform="translate(377.000000, 42.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point transform="translate(397.000000, 42.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point transform="translate(417.000000, 42.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point type="output" transform="translate(438.000000, 42.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point transform="translate(377.000000, 62.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point transform="translate(397.000000, 62.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point type="output" transform="translate(417.000000, 62.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point type="output" transform="translate(438.000000, 62.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point transform="translate(377.000000, 82.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point transform="translate(397.000000, 82.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point type="output" transform="translate(417.000000, 82.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point type="output" transform="translate(438.000000, 82.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point transform="translate(377.000000, 102.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point transform="translate(397.000000, 102.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point transform="translate(417.000000, 102.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point type="output" transform="translate(438.000000, 102.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point transform="translate(377.000000, 123.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point type="output" transform="translate(397.000000, 123.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point type="output" transform="translate(417.000000, 123.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point type="output" transform="translate(438.000000, 123.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point type="gateInput" transform="translate(376.000000, 141.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point type="output" transform="translate(397.000000, 143.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point type="output" transform="translate(417.000000, 143.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point type="output" transform="translate(438.000000, 143.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point transform="translate(377.000000, 163.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point type="gateInput" transform="translate(397.000000, 161.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point type="gateInput" transform="translate(417.000000, 161.000000)">
+    </svg:g>
+
+    <svg:g app-patch-point type="gateInput" transform="translate(437.000000, 161.000000)">
+    </svg:g>
+
+  </svg:g>
+
+</svg>
