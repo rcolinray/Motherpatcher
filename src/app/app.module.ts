@@ -12,6 +12,7 @@ import {
 } from './reducers';
 
 import { Mother32StateService } from './services/mother32-state.service';
+import { EditorStateService } from './services/editor-state.service';
 
 import { AppComponent } from './app.component';
 import { Mother32Component } from './components/mother32/mother32.component';
@@ -40,7 +41,10 @@ import { ControlsComponent } from './components/controls/controls.component';
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
-  providers: [Mother32StateService],
+  providers: [
+    Mother32StateService,
+    EditorStateService,
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

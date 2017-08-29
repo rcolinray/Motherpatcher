@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 
 import { Mother32StateService } from './services/mother32-state.service';
+import { EditorStateService } from './services/editor-state.service';
 
 import { Mother32, initMother32 } from './models';
 
@@ -19,9 +20,12 @@ import { Mother32, initMother32 } from './models';
 export class AppComponent implements OnInit {
 
   mother32s$: Observable<Mother32[]>;
+  scale$: Observable<number>;
 
-  constructor(private mother32State: Mother32StateService) {
-    this.mother32s$ = mother32State.mother32s$;
+  constructor(private mother32State: Mother32StateService,
+              private editorState: EditorStateService) {
+    this.mother32s$ = this.mother32State.mother32s$;
+    this.scale$ = this.editorState.scale$;
   }
 
   ngOnInit() {
@@ -29,6 +33,10 @@ export class AppComponent implements OnInit {
     const unit2 = initMother32('test2');
     this.mother32State.add(unit1);
     this.mother32State.add(unit2);
+  }
+
+  setScale(event: Event) {
+    this.editorState.setScale((event.target as any).value);
   }
 
 }

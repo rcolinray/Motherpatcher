@@ -19,6 +19,7 @@ import {
 } from '../../models';
 
 import { MouseRotator } from '../../util/mouse-rotator';
+import { getMother32HeightPx, getMother32WidthPx } from '../../util/scale';
 
 @Component({
   selector: 'app-controls',
@@ -29,6 +30,15 @@ import { MouseRotator } from '../../util/mouse-rotator';
 export class ControlsComponent implements OnInit {
 
   @Input() value: Mother32;
+  @Input() scale: number;
+
+  get width(): string {
+    return getMother32WidthPx(this.scale);
+  }
+
+  get height(): string {
+    return getMother32HeightPx(this.scale);
+  }
 
   constructor(private mother32State: Mother32StateService) { }
 

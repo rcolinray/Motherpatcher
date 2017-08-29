@@ -9,13 +9,16 @@ import {
 import { environment } from '../../environments/environment';
 
 import * as fromMother32 from './mother32';
+import * as fromEditor from './editor';
 
 export interface State {
   mother32: fromMother32.State,
+  editor: fromEditor.State,
 }
 
 export const reducers: ActionReducerMap<State> = {
   mother32: fromMother32.reducer,
+  editor: fromEditor.reducer,
 };
 
 export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
@@ -37,3 +40,10 @@ export const getAllMother32s = createSelector(
   getMother32,
   fromMother32.getAll,
 )
+
+export const getEditor = createFeatureSelector<fromEditor.State>('editor');
+
+export const getEditorScale = createSelector(
+  getEditor,
+  fromEditor.getScale,
+);
