@@ -1,5 +1,7 @@
 <input (input)="setScale($event)" type="range" min="1.0" max="5.0" [value]="scale$ | async" step="1.0">
 <input (input)="setScale($event)" type="number" min="1.0" max="5.0" [value]="scale$ | async" step="1.0">
+<button (click)="addMother32()">Add</button>
+<button (click)="removeMother32()">Remove</button>
 <app-mother32 *ngFor="let mother32 of mother32s$ | async"
               [value]="mother32"
               [scale]="scale$ | async"></app-mother32>

@@ -185,6 +185,10 @@
   dependencies:
     "@types/jasmine" "*"
 
+"@types/node@*":
+  version "8.0.26"
+  resolved "https://registry.yarnpkg.com/@types/node/-/node-8.0.26.tgz#4d58be925306fd22b1141085535a0268b8beb189"
+
 "@types/node@^6.0.46", "@types/node@~6.0.60":
   version "6.0.88"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-6.0.88.tgz#f618f11a944f6a18d92b5c472028728a3e3d4b66"
@@ -196,6 +200,12 @@
 "@types/selenium-webdriver@^2.53.35", "@types/selenium-webdriver@~2.53.39":
   version "2.53.42"
   resolved "https://registry.yarnpkg.com/@types/selenium-webdriver/-/selenium-webdriver-2.53.42.tgz#74cb77fb6052edaff2a8984ddafd88d419f25cac"
+
+"@types/uuid@^3.4.1":
+  version "3.4.1"
+  resolved "https://registry.yarnpkg.com/@types/uuid/-/uuid-3.4.1.tgz#1b8d5e318ba733f63042b7e58bbf5b8552eaa43f"
+  dependencies:
+    "@types/node" "*"
 
 abbrev@1:
   version "1.1.0"
@@ -5341,7 +5351,7 @@ uuid@^2.0.2:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-2.0.3.tgz#67e2e863797215530dff318e5bf9dcebfd47b21a"
 
-uuid@^3.0.0:
+uuid@^3.0.0, uuid@^3.1.0:
   version "3.1.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.1.0.tgz#3dd3d3e790abc24d7b0d3a034ffababe28ebbc04"
 

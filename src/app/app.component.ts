@@ -1,4 +1,7 @@
 import { Observable } from 'rxjs/Observable';
+import 'rxjs/add/operator/take';
+
+import { v4 as uuid } from 'uuid';
 
 import {
   Component,
@@ -29,14 +32,22 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    const unit1 = initMother32('test1');
-    const unit2 = initMother32('test2');
-    this.mother32State.add(unit1);
-    this.mother32State.add(unit2);
+    this.addMother32();
   }
 
   setScale(event: Event) {
     this.editorState.setScale((event.target as any).value);
+  }
+
+  addMother32() {
+    const entity = initMother32(uuid());
+    this.mother32State.add(entity);
+  }
+
+  removeMother32() {
+    this.mother32s$.take(1).subscribe((mother32s) => {
+      this.mother32State.remove(mother32s[0].id);
+    });
   }
 
 }
