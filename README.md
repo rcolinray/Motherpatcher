@@ -1,4 +1,7 @@
-# Mother32PatchEditor
+# Mother-32 Patch Editor
+
+![](https://raw.githubusercontent.com/rcolinray/mother32-patch-editor/master/screenshot.png)
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.3.2.
 
