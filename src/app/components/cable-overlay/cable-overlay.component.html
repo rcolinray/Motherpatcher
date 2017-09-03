@@ -1,0 +1,5 @@
+<svg [style.width]="width" [style.height]="height" [attr.viewBox]="viewBox" pointer-events="none">
+  <svg:g fill="none" fill-rule="evenodd" stroke-linecap="round">
+    <svg:g app-cable *ngFor="let cable of cables$ | async" [value]="cable"/>
+  </svg:g>
+</svg>

@@ -13,6 +13,7 @@ import {
 
 import { Mother32StateService } from './services/mother32-state.service';
 import { EditorStateService } from './services/editor-state.service';
+import { CableStateService } from './services/cable-state.service';
 
 import { AppComponent } from './app.component';
 import { Mother32Component } from './components/mother32/mother32.component';
@@ -23,6 +24,8 @@ import { OctaveLedComponent } from './components/octave-led/octave-led.component
 import { OctaveButtonComponent } from './components/octave-button/octave-button.component';
 import { BackgroundComponent } from './components/background/background.component';
 import { ControlsComponent } from './components/controls/controls.component';
+import { CableOverlayComponent } from './components/cable-overlay/cable-overlay.component';
+import { CableComponent } from './components/cable/cable.component';
 
 @NgModule({
   declarations: [
@@ -35,6 +38,8 @@ import { ControlsComponent } from './components/controls/controls.component';
     OctaveButtonComponent,
     BackgroundComponent,
     ControlsComponent,
+    CableOverlayComponent,
+    CableComponent,
   ],
   imports: [
     BrowserModule,
@@ -44,6 +49,7 @@ import { ControlsComponent } from './components/controls/controls.component';
   providers: [
     Mother32StateService,
     EditorStateService,
+    CableStateService,
   ],
   bootstrap: [AppComponent]
 })

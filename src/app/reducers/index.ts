@@ -10,15 +10,18 @@ import { environment } from '../../environments/environment';
 
 import * as fromMother32 from './mother32';
 import * as fromEditor from './editor';
+import * as fromCable from './cable';
 
 export interface State {
   mother32: fromMother32.State,
   editor: fromEditor.State,
+  cable: fromCable.State,
 }
 
 export const reducers: ActionReducerMap<State> = {
   mother32: fromMother32.reducer,
   editor: fromEditor.reducer,
+  cable: fromCable.reducer,
 };
 
 export function logger(reducer: ActionReducer<State>): ActionReducer<State> {
@@ -46,4 +49,16 @@ export const getEditor = createFeatureSelector<fromEditor.State>('editor');
 export const getEditorScale = createSelector(
   getEditor,
   fromEditor.getScale,
+);
+
+export const getCable = createFeatureSelector<fromCable.State>('cable');
+
+export const getAllCables = createSelector(
+  getCable,
+  fromCable.getAll,
+);
+
+export const getIncompleteCable = createSelector(
+  getCable,
+  fromCable.getIncompleteCable,
 );

@@ -19,9 +19,11 @@ import {
 export class Mother32StateService {
 
   mother32s$: Observable<Mother32[]>;
+  numMother32s$: Observable<number>;
 
   constructor(private store: Store<fromRoot.State>) {
     this.mother32s$ = this.store.select(fromRoot.getAllMother32s);
+    this.numMother32s$ = this.mother32s$.map(mother32s => mother32s.length);
   }
 
   add(mother32: Mother32) {

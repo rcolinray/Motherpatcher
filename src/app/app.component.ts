@@ -11,6 +11,7 @@ import {
 
 import { Mother32StateService } from './services/mother32-state.service';
 import { EditorStateService } from './services/editor-state.service';
+import { CableStateService } from './services/cable-state.service';
 
 import { Mother32, initMother32 } from './models';
 
@@ -23,11 +24,14 @@ import { Mother32, initMother32 } from './models';
 export class AppComponent implements OnInit {
 
   mother32s$: Observable<Mother32[]>;
+  numMother32s$: Observable<number>;
   scale$: Observable<number>;
 
   constructor(private mother32State: Mother32StateService,
-              private editorState: EditorStateService) {
+              private editorState: EditorStateService,
+              private cableState: CableStateService) {
     this.mother32s$ = this.mother32State.mother32s$;
+    this.numMother32s$ = this.mother32State.numMother32s$;
     this.scale$ = this.editorState.scale$;
   }
 
@@ -46,7 +50,14 @@ export class AppComponent implements OnInit {
 
   removeMother32() {
     this.mother32s$.take(1).subscribe((mother32s) => {
-      this.mother32State.remove(mother32s[0].id);
+      if (mother32s.length === 1) {
+        return;
+      }
+
+      const last = mother32s.length - 1;
+      const mother32Id = mother32s[last].id;
+      this.mother32State.remove(mother32Id);
+      this.cableState.removeConnectedCables(mother32Id);
     });
   }
 
