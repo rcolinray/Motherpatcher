@@ -18,7 +18,7 @@ export class CableComponent implements OnInit {
 
   @Input() value: Cable;
 
-  @HostBinding('attr.d') get desc(): string {
+  get desc(): string {
     return `M ${this.value.outputX}, ${this.value.outputY} L ${this.value.inputX}, ${this.value.inputY}`;
   }
 
