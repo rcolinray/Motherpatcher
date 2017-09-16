@@ -1,3 +1,4 @@
+import { noop } from 'rxjs/util/noop';
 import 'rxjs/add/operator/last';
 
 import {
@@ -84,7 +85,7 @@ export class KnobComponent implements OnInit {
         this.zone.run(() => {
           this.change.emit(angle);
         });
-      });
+      }, noop);
     });
   }
 
