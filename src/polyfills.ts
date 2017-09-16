@@ -70,3 +70,47 @@ import 'zone.js/dist/zone';  // Included with Angular CLI.
  * Need to import at least one locale-data with intl.
  */
 // import 'intl/locale-data/jsonp/en';
+
+declare global {
+  interface Set<T> {
+      isSuperset(subset: Set<T>) : boolean;
+      union(setB: Set<T>): Set<T>;
+      intersection(setB: Set<T>): Set<T>;
+      difference(setB: Set<T>): Set<T>;
+  }
+}
+
+Set.prototype.isSuperset = function(subset) {
+  for (let elem of subset) {
+      if (!this.has(elem)) {
+          return false;
+      }
+  }
+  return true;
+}
+
+Set.prototype.union = function(setB) {
+  let union = new Set(this);
+  for (let elem of setB) {
+      union.add(elem);
+  }
+  return union;
+}
+
+Set.prototype.intersection = function(setB) {
+  var intersection = new Set();
+  for (let elem of setB) {
+      if (this.has(elem)) {
+          intersection.add(elem);
+      }
+  }
+  return intersection;
+}
+
+Set.prototype.difference = function(setB) {
+  let difference = new Set(this);
+  for (let elem of setB) {
+      difference.delete(elem);
+  }
+  return difference;
+}
