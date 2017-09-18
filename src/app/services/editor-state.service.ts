@@ -7,6 +7,8 @@ import { Store } from '@ngrx/store';
 import * as fromRoot from '../reducers';
 import * as fromEditor from '../actions/editor';
 
+import { getValue } from '../util/observable';
+
 @Injectable()
 export class EditorStateService {
 
@@ -17,6 +19,10 @@ export class EditorStateService {
   }
 
   setScale(scale: number) {
+    const oldScale = getValue(this.scale$);
+    if (scale === oldScale) {
+      return;
+    }
     const action = new fromEditor.SetScaleAction(scale);
     this.store.dispatch(action);
   }
