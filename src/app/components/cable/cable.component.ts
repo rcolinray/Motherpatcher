@@ -1,4 +1,5 @@
 import { Observable } from 'rxjs/Observable';
+import { Subject } from 'rxjs/Subject';
 import 'rxjs/add/operator/skip';
 
 import {
@@ -10,6 +11,7 @@ import {
   NgZone,
   ViewChild,
   ElementRef,
+  OnDestroy,
 } from '@angular/core';
 
 import { Point } from '../../models';
@@ -22,7 +24,7 @@ import { mouseMoveObserver } from '../../util/mouse-move-observer';
   styleUrls: ['./cable.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class CableComponent implements OnInit {
+export class CableComponent implements OnInit, OnDestroy {
 
   @Input() value: [Point, Point];
   @Input() state: 'paired' | 'unpaired' = 'paired';
@@ -34,6 +36,8 @@ export class CableComponent implements OnInit {
     return this.formatDesc(this.value[0], this.value[1]);
   }
 
+  private destroySource = new Subject();
+
   constructor(private zone: NgZone) { }
 
   ngOnInit() {
@@ -44,12 +48,11 @@ export class CableComponent implements OnInit {
         const rootEl = outlineEl.ownerSVGElement;
         let point = rootEl.createSVGPoint();
 
-        const untilEvent = Observable.fromEvent(document, 'click');
-        const mouseMove = mouseMoveObserver(untilEvent);
+        const mouseMove = mouseMoveObserver(this.destroySource.asObservable());
 
         mouseMove.subscribe((event) => {
-          point.x = event.x;
-          point.y = event.y;
+          point.x = event.clientX;
+          point.y = event.clientY;
           point = point.matrixTransform(rootEl.getScreenCTM().inverse());
 
           outlineEl.setAttribute('d', this.formatDesc(this.value[0], point));
@@ -57,6 +60,10 @@ export class CableComponent implements OnInit {
         });
       });
     }
+  }
+
+  ngOnDestroy() {
+    this.destroySource.next();
   }
 
   private formatDesc(a: Point, b: Point): string {
