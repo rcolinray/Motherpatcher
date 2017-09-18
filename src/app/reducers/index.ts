@@ -12,6 +12,8 @@ import * as fromMother32 from './mother32';
 import * as fromEditor from './editor';
 import * as fromCable from './cable';
 
+import { ConnectionPair } from '../models';
+
 export interface State {
   mother32: fromMother32.State,
   editor: fromEditor.State,
@@ -55,10 +57,31 @@ export const getCable = createFeatureSelector<fromCable.State>('cable');
 
 export const getAllCables = createSelector(
   getCable,
-  fromCable.getAll,
+  fromCable.getAllCables,
 );
 
-export const getIncompleteCable = createSelector(
+export const getConnections = createSelector(
   getCable,
-  fromCable.getIncompleteCable,
+  fromCable.getConnections,
 );
+
+export const getAllConnections = createSelector(
+  getCable,
+  fromCable.getAllConnections,
+);
+
+export const getConnectionPairs = createSelector(
+  getCable,
+  fromCable.getConnectionPairs,
+);
+
+export const getUnpairedConnection = createSelector(
+  getCable,
+  fromCable.getUnpairedConnection,
+);
+
+export const getMother32Connections = function(mother32Id: string) {
+  return createSelector(getAllConnections, (connections) => {
+    return connections.filter(connection => connection.mother32Id === mother32Id);
+  });
+}

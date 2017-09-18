@@ -9,7 +9,7 @@ import {
 
 import { CableStateService } from '../../services/cable-state.service';
 
-import { Cable } from '../../models';
+import { ConnectionPair } from '../../models';
 
 import { getMother32Height, getMother32WidthPx, MOTHER32_SVG_WIDTH, MOTHER32_SVG_HEIGHT } from '../../util/scale';
 
@@ -24,7 +24,7 @@ export class CableOverlayComponent implements OnInit {
   @Input() scale: number;
   @Input() numMother32s: number;
 
-  cables$: Observable<Cable[]>;
+  connectionPairs$: Observable<ConnectionPair[]>;
 
   get viewBox(): string {
     return `0 0 ${MOTHER32_SVG_WIDTH} ${this.numMother32s * MOTHER32_SVG_HEIGHT}`;
@@ -39,7 +39,7 @@ export class CableOverlayComponent implements OnInit {
   }
 
   constructor(private cableState: CableStateService) {
-    this.cables$ = this.cableState.cables$;
+    this.connectionPairs$ = this.cableState.connectionPairs$;
   }
 
   ngOnInit() {

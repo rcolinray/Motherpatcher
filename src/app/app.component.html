@@ -6,5 +6,11 @@
   <app-mother32 *ngFor="let mother32 of mother32s$ | async"
                 [value]="mother32"
                 [scale]="scale$ | async"></app-mother32>
-  <app-cable-overlay [scale]="scale$ | async" [numMother32s]="numMother32s$ | async"></app-cable-overlay>
+  <app-cable-overlay [scale]="scale$ | async"
+                     [numMother32s]="numMother32s$ | async">
+  </app-cable-overlay>
+  <app-patch-point-overlay *ngIf="patching$ | async"
+                           [scale]="scale$ | async"
+                           [mother32s]="mother32s$ | async">
+  </app-patch-point-overlay>
 </div>

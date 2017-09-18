@@ -31,6 +31,7 @@ export class AppComponent implements OnInit {
   mother32s$: Observable<Mother32[]>;
   numMother32s$: Observable<number>;
   scale$: Observable<number>;
+  patching$: Observable<boolean>;
 
   constructor(private mother32State: Mother32StateService,
               private editorState: EditorStateService,
@@ -38,6 +39,7 @@ export class AppComponent implements OnInit {
     this.mother32s$ = this.mother32State.mother32s$;
     this.numMother32s$ = this.mother32State.numMother32s$;
     this.scale$ = this.editorState.scale$;
+    this.patching$ = this.cableState.unpairedConnection$.map((connection) => connection !== null);
   }
 
   ngOnInit() {

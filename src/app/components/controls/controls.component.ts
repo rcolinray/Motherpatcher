@@ -66,29 +66,4 @@ export class ControlsComponent implements OnInit {
     this.mother32State.turnKnob(this.value.id, knobName, angle);
   }
 
-  connectInput(event: MouseEvent, input: InputPatchPoint) {
-    const { x, y } = this.calcXY(event);
-    this.cableState.connectInput(this.value.id, input, x, y);
-  }
-
-  connectOutput(event: MouseEvent, output: OutputPatchPoint) {
-    const { x, y } = this.calcXY(event);
-    this.cableState.connectOutput(this.value.id, output, x, y);
-  }
-
-  private calcXY(event: MouseEvent): { x: number, y: number } {
-    const mother32s = getValue(this.mother32State.mother32s$);
-    const index = mother32s.findIndex((mother32) => {
-      return mother32.id === this.value.id;
-    });
-
-    const el = event.currentTarget as SVGGElement;
-    const transform = el.transform.baseVal.getItem(0);
-    const { e: xOffset, f: yOffset } = transform.matrix;
-    const { width, height } = el.getBBox();
-    const x = xOffset + width / 2.0;
-    const y = index * MOTHER32_SVG_HEIGHT + yOffset + height / 2.0;
-    return { x, y };
-  }
-
 }

@@ -26,6 +26,8 @@ import { BackgroundComponent } from './components/background/background.componen
 import { ControlsComponent } from './components/controls/controls.component';
 import { CableOverlayComponent } from './components/cable-overlay/cable-overlay.component';
 import { CableComponent } from './components/cable/cable.component';
+import { PatchPointOverlayComponent } from './components/patch-point-overlay/patch-point-overlay.component';
+import { PatchBayComponent } from './components/patch-bay/patch-bay.component';
 
 @NgModule({
   declarations: [
@@ -40,6 +42,8 @@ import { CableComponent } from './components/cable/cable.component';
     ControlsComponent,
     CableOverlayComponent,
     CableComponent,
+    PatchPointOverlayComponent,
+    PatchBayComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,10 @@
+<svg *ngFor="let mother32 of mother32s"
+     [style.width]="width"
+     [style.height]="height"
+     [attr.viewBox]="viewBox"
+     (click)="cancelConnection()">
+  <svg:g fill="none" fill-rule="evenodd" stroke-linecap="round">
+    <svg:g app-patch-bay [value]="mother32"
+                         [show]="show$ | async"></svg:g>
+  </svg:g>
+</svg>

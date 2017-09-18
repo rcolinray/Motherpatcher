@@ -8,6 +8,8 @@ import * as fromRoot from '../reducers';
 
 import * as fromMother32 from '../actions/mother32';
 
+import { getValue } from '../util/observable';
+
 import {
   Mother32,
   initMother32,
