@@ -13,4 +13,9 @@
                            [scale]="scale$ | async"
                            [mother32s]="mother32s$ | async">
   </app-patch-point-overlay>
+  <app-unpaired-cable-overlay *ngIf="patching$ | async"
+                              [scale]="scale$ | async"
+                              [numMother32s]="numMother32s$ | async"
+                              [value]="unpairedConnection$ | async">
+  </app-unpaired-cable-overlay>
 </div>

@@ -3,8 +3,10 @@ import 'rxjs/add/observable/fromEvent';
 import 'rxjs/add/operator/takeUntil';
 import 'rxjs/add/operator/map';
 
-export function mouseMoveObserver(): Observable<MouseEvent> {
+export function mouseMoveObserver(untilEvent: 'mouseup' | Observable<{}> = 'mouseup'): Observable<MouseEvent> {
   const mouseMove$: Observable<MouseEvent> = Observable.fromEvent(document, 'mousemove');
-  const mouseUp$ = Observable.fromEvent(document, 'mouseup');
-  return mouseMove$.takeUntil(mouseUp$);
+  if (untilEvent === 'mouseup') {
+    untilEvent = Observable.fromEvent(document, untilEvent);
+  }
+  return mouseMove$.takeUntil(untilEvent);
 }

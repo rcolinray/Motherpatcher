@@ -28,6 +28,7 @@ import { CableOverlayComponent } from './components/cable-overlay/cable-overlay.
 import { CableComponent } from './components/cable/cable.component';
 import { PatchPointOverlayComponent } from './components/patch-point-overlay/patch-point-overlay.component';
 import { PatchBayComponent } from './components/patch-bay/patch-bay.component';
+import { UnpairedCableOverlayComponent } from './components/unpaired-cable-overlay/unpaired-cable-overlay.component';
 
 @NgModule({
   declarations: [
@@ -44,6 +45,7 @@ import { PatchBayComponent } from './components/patch-bay/patch-bay.component';
     CableComponent,
     PatchPointOverlayComponent,
     PatchBayComponent,
+    UnpairedCableOverlayComponent,
   ],
   imports: [
     BrowserModule,

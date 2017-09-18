@@ -16,6 +16,7 @@ import { CableStateService } from './services/cable-state.service';
 import {
   Mother32,
   initMother32,
+  Connection,
 } from './models';
 
 import { getValue } from './util/observable';
@@ -31,6 +32,7 @@ export class AppComponent implements OnInit {
   mother32s$: Observable<Mother32[]>;
   numMother32s$: Observable<number>;
   scale$: Observable<number>;
+  unpairedConnection$: Observable<Connection | null>;
   patching$: Observable<boolean>;
 
   constructor(private mother32State: Mother32StateService,
@@ -39,7 +41,8 @@ export class AppComponent implements OnInit {
     this.mother32s$ = this.mother32State.mother32s$;
     this.numMother32s$ = this.mother32State.numMother32s$;
     this.scale$ = this.editorState.scale$;
-    this.patching$ = this.cableState.unpairedConnection$.map((connection) => connection !== null);
+    this.unpairedConnection$ = this.cableState.unpairedConnection$;
+    this.patching$ = this.unpairedConnection$.map((connection) => connection !== null);
   }
 
   ngOnInit() {
