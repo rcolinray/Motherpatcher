@@ -75,7 +75,7 @@ export class KnobComponent implements OnInit {
     const knobEl = this.knobRef.nativeElement as SVGGElement;
 
     this.zone.runOutsideAngular(() => {
-      const rotator = new MouseRotator(this.value, minAngle, maxAngle);
+      const rotator = new MouseRotator(event, this.value, minAngle, maxAngle);
 
       rotator.angle$.subscribe((angle) => {
         knobEl.transform.baseVal.getItem(0).setRotate(angle, x, y);

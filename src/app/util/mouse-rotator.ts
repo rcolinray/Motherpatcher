@@ -10,18 +10,27 @@ export class MouseRotator {
 
   angle$: Observable<number>;
 
+  private x: number;
+  private y: number;
   private xAmount: number = 0;
   private yAmount: number = 0;
 
-  constructor(private angle: number, private minAngle: number, private maxAngle: number) {
+  constructor(event: MouseEvent, private angle: number, private minAngle: number, private maxAngle: number) {
+    this.x = event.clientX;
+    this.y = event.clientY;
     this.xAmount = 0;
     this.yAmount = 0;
 
     this.angle$ = mouseMoveObserver().flatMap((event: MouseEvent) => {
+      const dx = event.clientX - this.x;
+      const dy = event.clientY - this.y;
+      this.x = event.clientX;
+      this.y = event.clientY;
+
       event.preventDefault();
       if (this.xAmount === 0 && this.yAmount === 0) {
-        const xMag = Math.abs(event.movementX);
-        const yMag = Math.abs(event.movementY);
+        const xMag = Math.abs(dx);
+        const yMag = Math.abs(dy);
         if (xMag === yMag) {
           return Observable.empty();
         }
@@ -33,7 +42,7 @@ export class MouseRotator {
         }
       }
 
-      const amount = this.xAmount * event.movementX + this.yAmount * event.movementY;
+      const amount = this.xAmount * dx + this.yAmount * dy;
       this.angle = clamp(this.angle + amount, this.minAngle, this.maxAngle);
       return Observable.of(this.angle);
     });
