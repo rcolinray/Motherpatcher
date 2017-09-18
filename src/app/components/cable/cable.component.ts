@@ -6,7 +6,7 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 
-import { ConnectionPair } from '../../models';
+import { Point } from '../../models';
 
 @Component({
   selector: '[app-cable]',
@@ -16,7 +16,7 @@ import { ConnectionPair } from '../../models';
 })
 export class CableComponent implements OnInit {
 
-  @Input() value: ConnectionPair;
+  @Input() value: [Point, Point];
 
   get desc(): string {
     return `M ${this.value[0].x}, ${this.value[0].y} L ${this.value[1].x}, ${this.value[1].y}`;

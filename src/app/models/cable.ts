@@ -7,11 +7,14 @@ export type Connection = InputConnection | OutputConnection;
 
 export type ConnectionPair = [Connection, Connection];
 
-export interface BaseConnection {
-  id: string;
-  mother32Id: string;
+export interface Point {
   x: number;
   y: number;
+}
+
+export interface BaseConnection extends Point {
+  id: string;
+  mother32Id: string;
 }
 
 export interface InputConnection extends BaseConnection {

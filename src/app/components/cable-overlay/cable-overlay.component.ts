@@ -9,7 +9,7 @@ import {
 
 import { CableStateService } from '../../services/cable-state.service';
 
-import { ConnectionPair } from '../../models';
+import { ConnectionPair, Point } from '../../models';
 
 import { getMother32Height, getMother32WidthPx, MOTHER32_SVG_WIDTH, MOTHER32_SVG_HEIGHT } from '../../util/scale';
 

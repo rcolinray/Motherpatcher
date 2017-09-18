@@ -10,13 +10,13 @@ import { CableStateService } from '../../services/cable-state.service';
 
 import {
   Mother32,
+  Point,
   Input as InputPatchPoint,
   Output as OutputPatchPoint,
 } from '../../models';
 
 import { getValue } from '../../util/observable';
 import { MOTHER32_SVG_HEIGHT } from '../../util/scale';
-import { Point } from '../../util/point';
 
 export type ShowPatchPoint = 'input' | 'output' | 'all';
 
