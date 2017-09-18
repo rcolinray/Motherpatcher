@@ -46,15 +46,11 @@ export class PatchBayComponent implements OnInit {
   }
 
   connectInput(event: MouseEvent, patchPoint: InputPatchPoint) {
-    // Need to stop propagation here so 'click' doesn't cancel the cable mousemove observer
-    event.stopPropagation();
     const { x, y } = this.calcXY(event);
     this.cableState.connectInput(this.value.id, patchPoint, x, y);
   }
 
   connectOutput(event: MouseEvent, patchPoint: OutputPatchPoint) {
-    // Need to stop propagation here so 'click' doesn't cancel the cable mousemove observer
-    event.stopPropagation();
     const { x, y } = this.calcXY(event);
     this.cableState.connectOutput(this.value.id, patchPoint, x, y);
   }
