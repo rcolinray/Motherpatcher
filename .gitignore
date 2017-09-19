@@ -4,6 +4,7 @@
 /dist
 /tmp
 /out-tsc
+/app-builds
 
 # dependencies
 /node_modules
@@ -19,6 +20,10 @@
 
 # IDE - VSCode
 .vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
 
 # misc
 /.sass-cache
@@ -28,7 +33,6 @@
 npm-debug.log
 testem.log
 /typings
-yarn-error.log
 
 # e2e
 /e2e/*.js
@@ -37,7 +41,3 @@ yarn-error.log
 # System Files
 .DS_Store
 Thumbs.db
-
-# Notes
-/NOTES.md
-/TODO.md

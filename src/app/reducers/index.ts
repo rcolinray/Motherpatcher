@@ -6,7 +6,7 @@ import {
   createFeatureSelector,
 } from '@ngrx/store';
 
-import { environment } from '../../environments/environment';
+import { environment } from 'environments';
 
 import * as fromMother32 from './mother32';
 import * as fromEditor from './editor';
