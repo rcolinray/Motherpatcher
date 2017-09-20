@@ -22,6 +22,7 @@ import {
 import { Mother32StateService } from './services/mother32-state.service';
 import { EditorStateService } from './services/editor-state.service';
 import { CableStateService } from './services/cable-state.service';
+import { FileService } from './services/file.service';
 
 import { AppComponent } from './app.component';
 import { Mother32Component } from './components/mother32/mother32.component';
@@ -69,6 +70,7 @@ import { UnpairedCableOverlayComponent } from './components/unpaired-cable-overl
     Mother32StateService,
     EditorStateService,
     CableStateService,
+    FileService,
   ],
   bootstrap: [AppComponent]
 })
