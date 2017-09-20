@@ -16,6 +16,58 @@ import { remote } from 'electron';
 
 import * as fs from 'fs';
 
+export async function showOpenDialog(options): Promise<string[]> {
+  return new Promise<string[]>((resolve, reject) => {
+    remote.dialog.showOpenDialog(options, (filePaths?: string[]) => {
+      if (!filePaths) {
+        reject();
+      }
+      else {
+        resolve(filePaths);
+      }
+    });
+  });
+}
+
+export async function showSaveDialog(options): Promise<string> {
+  return new Promise<string>((resolve, reject) => {
+    remote.dialog.showSaveDialog(options, (filename?: string) => {
+      if (!filename) {
+        reject();
+      }
+      else {
+        resolve(filename);
+      }
+    });
+  });
+}
+
+export async function readFile(filename: string): Promise<Buffer> {
+  return new Promise<Buffer>((resolve, reject) => {
+    fs.readFile(filename, (err, data) => {
+      if (err) {
+        reject(err);
+      }
+      else {
+        resolve(data);
+      }
+    });
+  });
+}
+
+export async function writeFile(filename: string, data: any): Promise<void> {
+  return new Promise<void>((resolve, reject) => {
+    fs.writeFile(filename, data, (err) => {
+      if (err) {
+        reject(err);
+      }
+      else {
+        resolve();
+      }
+    });
+  });
+}
+
 @Injectable()
 export class FileService {
 
@@ -24,33 +76,27 @@ export class FileService {
               private cableState: CableStateService,
               private zone: NgZone) { }
 
-  openPatch() {
-    remote.dialog.showOpenDialog({
+  async openPatch(): Promise<void> {
+    const options = {
       filters: [{
         name: 'Mother-32 Patch',
         extensions: ['m32patch'],
       }],
       properties: ['openFile'],
-    }, (filePaths: string[]) => {
-      if (!filePaths || filePaths.length !== 1) {
-        return;
-      }
-
-      fs.readFile(filePaths[0], (err, data) => {
+    };
+    showOpenDialog(options)
+      .then((filename) => {
+        return readFile(filename[0]);
+      })
+      .then((data) => {
+        const state = JSON.parse(data.toString());
+        this.loadPatch(state);
+      })
+      .catch((err) => {
         if (err) {
-          console.error(err);
-        }
-        else {
-          try {
-            const state = JSON.parse(data.toString());
-            this.loadPatch(state);
-          }
-          catch (ex) {
-            console.error(ex);
-          }
+          console.log(err);
         }
       });
-    });
   }
 
   private loadPatch(state: fromRoot.State) {
@@ -72,23 +118,23 @@ export class FileService {
   }
 
   savePatchAs() {
-    remote.dialog.showSaveDialog({
+    const options = {
       filters: [{
         name: 'Mother-32 Patch',
         extensions: ['m32patch'],
       }],
-    }, (filename: string) => {
-      if (!filename) {
-        return;
-      }
-      const state = getValue(this.store);
-      const serialized = JSON.stringify(state, null, '\t');
-      fs.writeFile(filename, serialized, (err) => {
+    };
+    showSaveDialog(options)
+      .then((filename) => {
+        const state = getValue(this.store);
+        const serialized = JSON.stringify(state, null, '\t');
+        return writeFile(filename, serialized);
+      })
+      .catch((err) => {
         if (err) {
-          console.error(err);
+          console.log(err);
         }
       });
-    });
   }
 
 
