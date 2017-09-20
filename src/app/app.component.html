@@ -1,26 +1,26 @@
-<md-toolbar>
-  <button md-button (click)="initPatch()">
+<div>
+  <button (click)="initPatch()">
     Init
   </button>
-  <button md-button (click)="openPatch()">
+  <button (click)="openPatch()">
     Open
   </button>
-  <button md-button (click)="savePatchAs()">
+  <button (click)="savePatchAs()">
     Save As...
   </button>
-  <button md-button (click)="addMother32()">
+  <button (click)="addMother32()">
     Add
   </button>
-  <button md-button (click)="removeMother32()">
+  <button (click)="removeMother32()">
     Remove
   </button>
-  <md-slider min="1.0"
-             max="5.0"
-             step="1.0"
-             [value]="scale$ | async"
-             (input)="setScale($event)">
-  </md-slider>
-</md-toolbar>
+  <input type="range"
+         min="1.0"
+         max="5.0"
+         step="1.0"
+         [value]="scale$ | async"
+         (input)="setScale($event)">
+</div>
 <div>
   <app-mother32 *ngFor="let mother32 of mother32s$ | async"
                 [value]="mother32"

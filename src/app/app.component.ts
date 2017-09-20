@@ -9,8 +9,6 @@ import {
   ChangeDetectionStrategy,
 } from '@angular/core';
 
-import { MdSliderChange } from '@angular/material';
-
 import { Mother32StateService } from './services/mother32-state.service';
 import { EditorStateService } from './services/editor-state.service';
 import { CableStateService } from './services/cable-state.service';
@@ -53,8 +51,8 @@ export class AppComponent implements OnInit {
     this.addMother32();
   }
 
-  setScale(event: MdSliderChange) {
-    this.editorState.setScale(event.value);
+  setScale(event: Event) {
+    this.editorState.setScale((event.target as any).value);
   }
 
   initPatch() {
