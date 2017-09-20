@@ -32,22 +32,24 @@ export class FileService {
       }],
       properties: ['openFile'],
     }, (filePaths: string[]) => {
-      if (filePaths.length === 1) {
-        fs.readFile(filePaths[0], (err, data) => {
-          if (err) {
-            console.error(err);
-          }
-          else {
-            try {
-              const state = JSON.parse(data.toString());
-              this.loadPatch(state);
-            }
-            catch (ex) {
-              console.error(ex);
-            }
-          }
-        });
+      if (!filePaths || filePaths.length !== 1) {
+        return;
       }
+
+      fs.readFile(filePaths[0], (err, data) => {
+        if (err) {
+          console.error(err);
+        }
+        else {
+          try {
+            const state = JSON.parse(data.toString());
+            this.loadPatch(state);
+          }
+          catch (ex) {
+            console.error(ex);
+          }
+        }
+      });
     });
   }
 
@@ -76,6 +78,9 @@ export class FileService {
         extensions: ['m32patch'],
       }],
     }, (filename: string) => {
+      if (!filename) {
+        return;
+      }
       const state = getValue(this.store);
       const serialized = JSON.stringify(state, null, '\t');
       fs.writeFile(filename, serialized, (err) => {
