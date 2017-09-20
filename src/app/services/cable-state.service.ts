@@ -121,47 +121,36 @@ export class CableStateService {
     }
   }
 
-  removeMother32Connections(mother32Id: string): string[] {
-    const connections = getValue(this.selectMother32Connections$(mother32Id));
-    let removedIds = [];
-    for (let connection of connections) {
-      removedIds.push(connection.id);
-      this.removeConnection(connection.id);
-    }
-    return removedIds;
-  }
-
   selectMother32Connections$(mother32Id: string): Observable<Connection[]> {
     return this.store.select(fromRoot.getMother32Connections(mother32Id));
   }
 
   removeConnectedCables(mother32Id: string) {
-    const allRemovedIds = new Set(this.removeMother32Connections(mother32Id));
-    const cables = getValue(this.cables$);
-    const { cableIds, pairIds } = cables.reduce((acc, cable) => {
-      const connectionIds = new Set(cable.connectionIds);
-      const removedIds = allRemovedIds.intersection(connectionIds);
+    const directConnections = getValue(this.selectMother32Connections$(mother32Id));
+    let directConnectionIds = new Set(directConnections.map((connection) => connection.id));
 
-      if (removedIds.size > 0) {
+    const cables = getValue(this.cables$);
+    const { cableIds, connectionIds } = cables.reduce((acc, cable) => {
+      const connectionIds = new Set(cable.connectionIds);
+      const pairIds = connectionIds.intersection(directConnectionIds);
+
+      if (pairIds.size > 0) {
         acc.cableIds.push(cable.id);
-        const toRemove = removedIds.difference(connectionIds);
-        if (toRemove.size > 0) {
-          acc.pairIds = acc.pairIds.concat(toRemove.values);
-        }
+        acc.connectionIds = acc.connectionIds.concat(cable.connectionIds);
       }
 
       return acc;
     }, {
       cableIds: [],
-      pairIds: [],
+      connectionIds: [],
     });
 
-    for (let connectionId in pairIds) {
-      this.removeConnection(connectionId);
+    for (let cableId of cableIds) {
+      this.removeCable(cableId);
     }
 
-    for (let cableId in cableIds) {
-      this.removeCable(cableId);
+    for (let connectionId of connectionIds) {
+      this.removeConnection(connectionId);
     }
   }
 

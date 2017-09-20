@@ -4,6 +4,8 @@ import { Injectable } from '@angular/core';
 
 import { Store } from '@ngrx/store';
 
+import { CableStateService } from './cable-state.service';
+
 import * as fromRoot from '../reducers';
 
 import * as fromMother32 from '../actions/mother32';
@@ -23,7 +25,8 @@ export class Mother32StateService {
   mother32s$: Observable<Mother32[]>;
   numMother32s$: Observable<number>;
 
-  constructor(private store: Store<fromRoot.State>) {
+  constructor(private store: Store<fromRoot.State>,
+              private cableState: CableStateService) {
     this.mother32s$ = this.store.select(fromRoot.getAllMother32s);
     this.numMother32s$ = this.mother32s$.map(mother32s => mother32s.length);
   }
@@ -34,6 +37,8 @@ export class Mother32StateService {
   }
 
   remove(id: string) {
+    this.cableState.removeConnectedCables(id);
+
     const action = new fromMother32.RemoveMother32Action(id);
     this.store.dispatch(action);
   }
