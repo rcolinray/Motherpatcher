@@ -12,9 +12,6 @@ export function reducer(state: State = initialState, action: fromEditor.Actions)
   switch (action.type) {
     case fromEditor.SET_SCALE: {
       const newState = action.payload;
-      if (newState < 1.0 || newState > 5.0) {
-        return state;
-      }
       return {
         ...state,
         scale: newState,
