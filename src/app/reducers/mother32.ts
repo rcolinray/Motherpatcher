@@ -21,10 +21,6 @@ export function reducer(state: State = initialState, action: fromMother32.Action
   switch (action.type) {
 
     case fromMother32.ADD_MOTHER32: {
-      if (state.ids.length === 4) {
-        return state;
-      }
-
       const entity = action.payload;
       return {
         ...state,
@@ -37,10 +33,6 @@ export function reducer(state: State = initialState, action: fromMother32.Action
     }
 
     case fromMother32.REMOVE_MOTHER32: {
-      if (state.ids.length === 1) {
-        return state;
-      }
-
       const entityId = action.payload;
       const newIds = state.ids.filter((id) => {
         return id !== entityId;
