@@ -52,11 +52,6 @@ export function reducer(state: State = initialState, action: fromMother32.Action
 
     case fromMother32.TURN_KNOB: {
       const entity = state.entities[action.payload.entityId];
-      const prevState = entity[action.payload.knobName];
-      if (action.payload.angle === prevState) {
-        return state;
-      }
-
       return {
         ...state,
         entities: {

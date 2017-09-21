@@ -41,6 +41,11 @@ export const metaReducers: MetaReducer<State>[] = !environment.production
 
 export const getMother32 = createFeatureSelector<fromMother32.State>('mother32');
 
+export const getMother32s = createSelector(
+  getMother32,
+  fromMother32.getEntities, 
+);
+
 export const getAllMother32s = createSelector(
   getMother32,
   fromMother32.getAll,
