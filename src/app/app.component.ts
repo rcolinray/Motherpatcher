@@ -1,8 +1,6 @@
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/take';
 
-import { v4 as uuid } from 'uuid';
-
 import {
   Component,
   OnInit,
@@ -16,7 +14,6 @@ import { FileService } from './services/file.service';
 
 import {
   Mother32,
-  initMother32,
   Connection,
 } from './models';
 
@@ -53,7 +50,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.addMother32();
+    this.initPatch();
   }
 
   setScale(event: Event) {
@@ -69,12 +66,8 @@ export class AppComponent implements OnInit {
   }
 
   initPatch() {
-    const mother32s = getValue(this.mother32s$);
-    for (let mother32 of mother32s) {
-      this.mother32State.remove(mother32.id);
-    }
-
-    this.addMother32();
+    this.editorState.init();
+    this.mother32State.init();
   }
 
   openPatch() {
@@ -86,24 +79,11 @@ export class AppComponent implements OnInit {
   }
 
   addMother32() {
-    const mother32s = getValue(this.mother32s$);
-    if (mother32s.length === 3) {
-      return;
-    }
-
-    const entity = initMother32(uuid());
-    this.mother32State.add(entity);
+    this.mother32State.addNew();
   }
 
   removeMother32() {
-    const mother32s = getValue(this.mother32s$);
-    if (mother32s.length === 1) {
-      return;
-    }
-
-    const last = mother32s.length - 1;
-    const mother32Id = mother32s[last].id;
-    this.mother32State.remove(mother32Id);
+    this.mother32State.removeExisting();
   }
 
 }
