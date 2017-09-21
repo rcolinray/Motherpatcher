@@ -25,7 +25,7 @@
   <input [value]="name$ | async" (input)="setName($event)">
 </div>
 <div>
-  <textarea placeholder="Notes..." (change)="setNotes($event)">{{notes$ | async}}</textarea>
+  <textarea placeholder="Notes..." [value]="notes$ | async" (change)="setNotes($event)"></textarea>
 </div>
 <div>
   <app-mother32 *ngFor="let mother32 of mother32s$ | async"
