@@ -68,6 +68,10 @@ export class KnobComponent implements OnInit {
   ngOnInit() {
   }
 
+  init() {
+    this.change.emit(0);
+  }
+
   rotate(event: MouseEvent) {
     const { minAngle, maxAngle } = this.minMaxAngles;
     const { x, y } = this.transformOffsets;

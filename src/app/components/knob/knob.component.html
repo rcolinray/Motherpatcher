@@ -1,4 +1,5 @@
 <svg:g (mousedown)="rotate($event)"
+       (dblclick)="init()"
        [attr.transform]="transform"
        pointer-events="bounding-box"
        #knob>
