@@ -24,6 +24,13 @@ export class EditorStateService {
     this.notes$ = this.store.select(fromRoot.getEditorNotes);
   }
 
+  init() {
+    const setNameAction = new fromEditor.SetNameAction('Empty Patch');
+    this.store.dispatch(setNameAction);
+    const setNotesAction = new fromEditor.SetNotesAction('');
+    this.store.dispatch(setNotesAction);
+  }
+
   setScale(scale: number) {
     const oldScale = getValue(this.scale$);
     if (scale === oldScale) {
