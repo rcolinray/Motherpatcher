@@ -10,7 +10,7 @@ export interface State {
 export const initialState: State = {
   scale: 1.0,
   filename: null,
-  name: "Init Patch",
+  name: "Empty Patch",
   notes: "",
 };
 
