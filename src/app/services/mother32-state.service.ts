@@ -1,3 +1,5 @@
+import { v4 as uuid } from 'uuid';
+
 import { Observable } from 'rxjs/Observable';
 
 import { Injectable } from '@angular/core';
@@ -29,6 +31,36 @@ export class Mother32StateService {
               private cableState: CableStateService) {
     this.mother32s$ = this.store.select(fromRoot.getAllMother32s);
     this.numMother32s$ = this.mother32s$.map(mother32s => mother32s.length);
+  }
+
+  init() {
+    const mother32s = getValue(this.mother32s$);
+    for (let mother32 of mother32s) {
+      this.remove(mother32.id);
+    }
+
+    this.addNew();
+  }
+
+  addNew() {
+    const mother32s = getValue(this.mother32s$);
+    if (mother32s.length === 3) {
+      return;
+    }
+
+    const entity = initMother32(uuid());
+    this.add(entity);
+  }
+
+  removeExisting() {
+    const mother32s = getValue(this.mother32s$);
+    if (mother32s.length === 1) {
+      return;
+    }
+
+    const last = mother32s.length - 1;
+    const mother32Id = mother32s[last].id;
+    this.remove(mother32Id);
   }
 
   add(mother32: Mother32) {
