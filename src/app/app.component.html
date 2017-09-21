@@ -15,11 +15,17 @@
     Remove
   </button>
   <input type="range"
-         min="1.0"
-         max="5.0"
-         step="1.0"
-         [value]="scale$ | async"
-         (input)="setScale($event)">
+  min="1.0"
+  max="5.0"
+  step="1.0"
+  [value]="scale$ | async"
+  (input)="setScale($event)">
+</div>
+<div>
+  <input [value]="name$ | async" (input)="setName($event)">
+</div>
+<div>
+  <textarea placeholder="Notes..." (change)="setNotes($event)">{{notes$ | async}}</textarea>
 </div>
 <div>
   <app-mother32 *ngFor="let mother32 of mother32s$ | async"

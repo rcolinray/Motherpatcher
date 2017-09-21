@@ -30,6 +30,8 @@ import { getValue } from './util/observable';
 })
 export class AppComponent implements OnInit {
 
+  name$: Observable<string>;
+  notes$: Observable<string>;
   mother32s$: Observable<Mother32[]>;
   numMother32s$: Observable<number>;
   scale$: Observable<number>;
@@ -40,6 +42,9 @@ export class AppComponent implements OnInit {
               private editorState: EditorStateService,
               private cableState: CableStateService,
               private file: FileService) {
+
+    this.name$ = this.editorState.name$;
+    this.notes$ = this.editorState.notes$;
     this.mother32s$ = this.mother32State.mother32s$;
     this.numMother32s$ = this.mother32State.numMother32s$;
     this.scale$ = this.editorState.scale$;
@@ -53,6 +58,14 @@ export class AppComponent implements OnInit {
 
   setScale(event: Event) {
     this.editorState.setScale((event.target as any).value);
+  }
+
+  setName(event: Event) {
+    this.editorState.setName((event.target as any).value);
+  }
+
+  setNotes(event: Event) {
+    this.editorState.setNotes((event.target as any).value);
   }
 
   initPatch() {
