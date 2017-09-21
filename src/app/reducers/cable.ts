@@ -18,11 +18,9 @@ export interface State {
     [id: string]: Connection,
   },
   unpairedId: string | null;
-  showCables: boolean;
 }
 
 export const initialState: State = {
-  showCables: true,
   cableIds: [],
   cables: {},
   connectionIds: [],
@@ -32,13 +30,6 @@ export const initialState: State = {
 
 export function reducer(state: State = initialState, action: fromCable.Actions): State {
   switch (action.type) {
-    case fromCable.TOGGLE_SHOW_CABLES: {
-      return {
-        ...state,
-        showCables: !state.showCables,
-      };
-    }
-
     case fromCable.ADD_CABLE: {
       const cable = action.payload;
       return {

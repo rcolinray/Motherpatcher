@@ -5,17 +5,12 @@ import {
   Connection,
 } from '../models/cable';
 
-export const TOGGLE_SHOW_CABLES = '[Cable] Toggle Show Cables';
 export const ADD_CABLE = '[Cable] Add Cable';
 export const REMOVE_CABLE = '[Cable] Remove Cable';
 export const ADD_UNPAIRED_CONNECTION = '[Cable] Add Unpaired Connection';
 export const CANCEL_CONNECTION = '[Cable] Cancel Connection';
 export const ADD_PAIRED_CONNECTION = '[Cable] Add Paired Connection';
 export const REMOVE_CONNECTION = '[Cable] Remove Connection';
-
-export class ToggleShowCablesAction implements Action {
-  readonly type = TOGGLE_SHOW_CABLES;
-}
 
 export class AddCableAction implements Action {
   readonly type = ADD_CABLE;
@@ -47,8 +42,7 @@ export class RemoveConnectionAction implements Action {
   constructor(public payload: string) {}
 }
 
-export type Actions = ToggleShowCablesAction
-                    | AddCableAction
+export type Actions = AddCableAction
                     | RemoveCableAction
                     | AddUnpairedConnectionAction
                     | AddPairedConnectionAction
