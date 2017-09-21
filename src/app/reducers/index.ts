@@ -53,6 +53,21 @@ export const getEditorScale = createSelector(
   fromEditor.getScale,
 );
 
+export const getEditorFilename = createSelector(
+  getEditor,
+  fromEditor.getFilename,
+);
+
+export const getEditorName = createSelector(
+  getEditor,
+  fromEditor.getName,
+);
+
+export const getEditorNotes = createSelector(
+  getEditor,
+  fromEditor.getNotes,
+);
+
 export const getCable = createFeatureSelector<fromCable.State>('cable');
 
 export const getAllCables = createSelector(
