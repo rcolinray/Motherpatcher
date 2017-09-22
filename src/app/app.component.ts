@@ -43,10 +43,8 @@ export class AppComponent implements OnInit {
     this.name$ = this.editorState.name$;
     this.notes$ = this.editorState.notes$;
     this.mother32s$ = this.mother32State.mother32s$;
-    this.numMother32s$ = this.mother32State.numMother32s$;
     this.scale$ = this.editorState.scale$;
     this.unpairedConnection$ = this.cableState.unpairedConnection$;
-    this.patching$ = this.unpairedConnection$.map((connection) => connection !== null);
   }
 
   ngOnInit() {

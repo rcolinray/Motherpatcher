@@ -1,0 +1,17 @@
+<div class="container">
+  <app-mother32 *ngFor="let mother32 of mother32s"
+                [value]="mother32"
+                [scale]="scale"></app-mother32>
+  <app-cable-overlay [scale]="scale"
+                     [numMother32s]="numMother32s">
+  </app-cable-overlay>
+  <app-patch-point-overlay *ngIf="patching"
+                           [scale]="scale"
+                           [mother32s]="mother32s">
+  </app-patch-point-overlay>
+  <app-unpaired-cable-overlay *ngIf="patching"
+                              [scale]="scale"
+                              [numMother32s]="numMother32s"
+                              [value]="unpairedConnection">
+  </app-unpaired-cable-overlay>
+</div>
