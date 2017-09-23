@@ -31,7 +31,6 @@ import { PatchPointOverlayComponent } from './components/patch-point-overlay/pat
 import { PatchBayComponent } from './components/patch-bay/patch-bay.component';
 import { UnpairedCableOverlayComponent } from './components/unpaired-cable-overlay/unpaired-cable-overlay.component';
 import { EditorComponent } from './components/editor/editor.component';
-import { TitleBarComponent } from './components/title-bar/title-bar.component';
 
 @NgModule({
   declarations: [
@@ -50,7 +49,6 @@ import { TitleBarComponent } from './components/title-bar/title-bar.component';
     PatchBayComponent,
     UnpairedCableOverlayComponent,
     EditorComponent,
-    TitleBarComponent,
   ],
   imports: [
     BrowserModule,
