@@ -34,6 +34,8 @@ export class AppComponent implements OnInit {
   scale$: Observable<number>;
   unpairedConnection$: Observable<Connection | null>;
   patching$: Observable<boolean>;
+  showFiles$: Observable<boolean>;
+  showInspector$: Observable<boolean>;
 
   constructor(private mother32State: Mother32StateService,
               private editorState: EditorStateService,
@@ -45,23 +47,33 @@ export class AppComponent implements OnInit {
     this.mother32s$ = this.mother32State.mother32s$;
     this.scale$ = this.editorState.scale$;
     this.unpairedConnection$ = this.cableState.unpairedConnection$;
+    this.showFiles$ = this.editorState.showFiles$;
+    this.showInspector$ = this.editorState.showInspector$;
   }
 
   ngOnInit() {
     this.initPatch();
   }
 
-  setScale(event: Event) {
-    this.editorState.setScale((event.target as any).value);
+  setScale(value: number) {
+    this.editorState.setScale(value);
   }
 
-  setName(event: Event) {
-    this.editorState.setName((event.target as any).value);
+  toggleFiles() {
+    this.editorState.toggleFiles();
   }
 
-  setNotes(event: Event) {
-    this.editorState.setNotes((event.target as any).value);
+  toggleInspector() {
+    this.editorState.toggleInspector();
   }
+
+  // setName(event: Event) {
+  //   this.editorState.setName((event.target as any).value);
+  // }
+
+  // setNotes(event: Event) {
+  //   this.editorState.setNotes((event.target as any).value);
+  // }
 
   initPatch() {
     this.editorState.init();

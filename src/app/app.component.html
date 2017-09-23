@@ -1,4 +1,21 @@
-<app-editor [mother32s]="mother32s$ | async"
-            [scale]="scale$ | async"
-            [unpairedConnection]="unpairedConnection$ | async">
-</app-editor>
+<app-title-bar [scale]="scale$ | async"
+               [title]="name$ | async"
+               (toggleFiles)="toggleFiles()"
+               (toggleInspector)="toggleInspector()"
+               (scaleChange)="setScale($event)">
+
+</app-title-bar>
+<md-sidenav-container>
+
+    <md-sidenav mode="side" [opened]="showFiles$ | async">
+      <app-file-hierarchy></app-file-hierarchy>
+    </md-sidenav>
+    <app-editor [mother32s]="mother32s$ | async"
+                [scale]="scale$ | async"
+                [unpairedConnection]="unpairedConnection$ | async">
+    </app-editor>
+
+    <md-sidenav mode="side" position="end" [opened]="showInspector$ | async">
+      <app-inspector></app-inspector>
+    </md-sidenav>
+</md-sidenav-container>

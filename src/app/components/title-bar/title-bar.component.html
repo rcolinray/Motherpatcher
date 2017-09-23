@@ -1,0 +1,15 @@
+<md-toolbar>
+  <button md-button (click)="toggleFiles.emit()">
+    <md-icon>list</md-icon>
+  </button>
+
+  <md-slider min="1.0" max="5.0" step="1.0" [value]="scale" (input)="scaleChange.emit($event.value)"></md-slider>
+
+  <span class="title">
+    {{title}}
+  </span>
+
+  <button md-button (click)="toggleInspector.emit()">
+    <md-icon>info_outline</md-icon>
+  </button>
+</md-toolbar>

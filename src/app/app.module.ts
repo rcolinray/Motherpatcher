@@ -1,5 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
+
+import {
+  MdToolbarModule,
+  MdSidenavModule,
+  MdButtonModule,
+  MdIconModule,
+  MdSliderModule,
+} from '@angular/material';
 
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -31,6 +40,9 @@ import { PatchPointOverlayComponent } from './components/patch-point-overlay/pat
 import { PatchBayComponent } from './components/patch-bay/patch-bay.component';
 import { UnpairedCableOverlayComponent } from './components/unpaired-cable-overlay/unpaired-cable-overlay.component';
 import { EditorComponent } from './components/editor/editor.component';
+import { TitleBarComponent } from './components/title-bar/title-bar.component';
+import { FileHierarchyComponent } from './components/file-hierarchy/file-hierarchy.component';
+import { InspectorComponent } from './components/inspector/inspector.component';
 
 @NgModule({
   declarations: [
@@ -49,9 +61,18 @@ import { EditorComponent } from './components/editor/editor.component';
     PatchBayComponent,
     UnpairedCableOverlayComponent,
     EditorComponent,
+    TitleBarComponent,
+    FileHierarchyComponent,
+    InspectorComponent,
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
+    MdToolbarModule,
+    MdSidenavModule,
+    MdButtonModule,
+    MdIconModule,
+    MdSliderModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],
