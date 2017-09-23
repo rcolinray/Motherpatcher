@@ -1,4 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
+$fa-font-path: "~font-awesome/fonts/";
+@import "~font-awesome/scss/font-awesome";
 
 html, body, app-root, .full-height {
   height: 100%;
@@ -6,4 +8,6 @@ html, body, app-root, .full-height {
 
 body {
   margin: 0px;
+
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
 }
