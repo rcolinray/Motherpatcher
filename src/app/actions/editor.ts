@@ -4,6 +4,8 @@ export const SET_SCALE = '[Editor] Set Scale';
 export const SET_FILENAME = '[Editor] Set Filename';
 export const SET_NAME = '[Editor] Set Name';
 export const SET_NOTES = '[Editor] Set Notes';
+export const TOGGLE_FILES = '[Editor] Toggle Files';
+export const TOGGLE_INSPECTOR = '[Editor] Toggle Inspector';
 
 export class SetScaleAction implements Action {
   readonly type = SET_SCALE;
@@ -33,8 +35,17 @@ export class SetNotesAction implements Action {
   }
 }
 
+export class ToggleFilesAction implements Action {
+  readonly type = TOGGLE_FILES;
+}
+
+export class ToggleInspectorAction implements Action {
+  readonly type = TOGGLE_INSPECTOR;
+}
 
 export type Actions = SetScaleAction
                     | SetFilenameAction
                     | SetNameAction
-                    | SetNotesAction;
+                    | SetNotesAction
+                    | ToggleFilesAction
+                    | ToggleInspectorAction;

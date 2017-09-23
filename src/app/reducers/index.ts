@@ -43,7 +43,7 @@ export const getMother32 = createFeatureSelector<fromMother32.State>('mother32')
 
 export const getMother32s = createSelector(
   getMother32,
-  fromMother32.getEntities, 
+  fromMother32.getEntities,
 );
 
 export const getAllMother32s = createSelector(
@@ -71,6 +71,16 @@ export const getEditorName = createSelector(
 export const getEditorNotes = createSelector(
   getEditor,
   fromEditor.getNotes,
+);
+
+export const getEditorShowFiles = createSelector(
+  getEditor,
+  fromEditor.getShowFiles,
+);
+
+export const getEditorShowInspector = createSelector(
+  getEditor,
+  fromEditor.getShowInspector,
 );
 
 export const getCable = createFeatureSelector<fromCable.State>('cable');

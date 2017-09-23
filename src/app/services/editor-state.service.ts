@@ -16,12 +16,16 @@ export class EditorStateService {
   filename$: Observable<string>;
   name$: Observable<string>;
   notes$: Observable<string>;
+  showFiles$: Observable<boolean>;
+  showInspector$: Observable<boolean>;
 
   constructor(private store: Store<fromRoot.State>) {
     this.scale$ = this.store.select(fromRoot.getEditorScale);
     this.filename$ = this.store.select(fromRoot.getEditorFilename);
     this.name$ = this.store.select(fromRoot.getEditorName);
     this.notes$ = this.store.select(fromRoot.getEditorNotes);
+    this.showFiles$ = this.store.select(fromRoot.getEditorShowFiles);
+    this.showInspector$ = this.store.select(fromRoot.getEditorShowInspector);
   }
 
   init() {
@@ -59,4 +63,13 @@ export class EditorStateService {
     this.store.dispatch(action);
   }
 
+  toggleFiles() {
+    const action = new fromEditor.ToggleFilesAction();
+    this.store.dispatch(action);
+  }
+
+  toggleInspector() {
+    const action = new fromEditor.ToggleInspectorAction();
+    this.store.dispatch(action);
+  }
 }
