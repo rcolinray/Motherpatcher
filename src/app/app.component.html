@@ -1,32 +1,4 @@
-<div>
-  <button (click)="initPatch()">
-    Init
-  </button>
-  <button (click)="openPatch()">
-    Open
-  </button>
-  <button (click)="savePatchAs()">
-    Save As...
-  </button>
-  <button (click)="addMother32()">
-    Add
-  </button>
-  <button (click)="removeMother32()">
-    Remove
-  </button>
-  <input type="range"
-  min="1.0"
-  max="5.0"
-  step="0.5"
-  [value]="scale$ | async"
-  (input)="setScale($event)">
-</div>
-<div>
-  <input [value]="name$ | async" (input)="setName($event)">
-</div>
-<div>
-  <textarea placeholder="Notes..." [value]="notes$ | async" (change)="setNotes($event)"></textarea>
-</div>
+<app-title-bar></app-title-bar>
 <app-editor [mother32s]="mother32s$ | async"
             [scale]="scale$ | async"
             [unpairedConnection]="unpairedConnection$ | async">

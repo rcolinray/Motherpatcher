@@ -1,0 +1,45 @@
+:host {
+  display: block;
+  height: 38px;
+  left: 0px;
+  right: 0px;
+  position: sticky;
+
+  padding-left: 78px;
+  padding-right: 8px;
+
+  -webkit-app-region: drag;
+  user-select: none;
+
+  background-color: whitesmoke;
+}
+
+button {
+  -webkit-app-region: no-drag;
+
+  background-color: whitesmoke;
+
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  height: 24px;
+  outline: none;
+
+  &.no-outline {
+    border: none;
+  }
+
+  &:active {
+    background-color: lightgray;
+  }
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  height: 100%;
+}
+
+.center-container {
+  flex: 1;
+}
