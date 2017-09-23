@@ -16,13 +16,21 @@ if (serve) {
 
 function createWindow() {
 
-  // Create the browser window.
-  win = new BrowserWindow({
+  const options = {
     x: 0,
     y: 0,
     width: 1280,
     height: 768,
-  });
+    frame: false,
+    titleBarStyle: undefined,
+  };
+
+  if (process.platform === 'darwin') {
+    options.titleBarStyle = 'hiddenInset';
+  }
+
+  // Create the browser window.
+  win = new BrowserWindow(options);
 
   // and load the index.html of the app.
   win.loadURL('file://' + __dirname + '/index.html');
