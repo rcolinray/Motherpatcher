@@ -9,6 +9,8 @@ import * as fromEditor from '../actions/editor';
 
 import { getValue } from '../util/observable';
 
+import { remote } from 'electron';
+
 @Injectable()
 export class EditorStateService {
 
@@ -29,10 +31,8 @@ export class EditorStateService {
   }
 
   init() {
-    const setNameAction = new fromEditor.SetNameAction('Empty Patch');
-    this.store.dispatch(setNameAction);
-    const setNotesAction = new fromEditor.SetNotesAction('');
-    this.store.dispatch(setNotesAction);
+    this.setName('Empty Patch');
+    this.setNotes('');
   }
 
   zoomIn() {
@@ -64,6 +64,9 @@ export class EditorStateService {
   }
 
   setName(name: string) {
+    const window = remote.getCurrentWindow();
+    window.setTitle(name);
+
     const oldName = getValue(this.name$);
     if (name === oldName) {
       return;
