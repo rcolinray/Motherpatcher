@@ -1,8 +1,12 @@
 <app-title-bar [scale]="scale$ | async"
                [title]="name$ | async"
+               (initPatch)="initPatch()"
+               (savePatch)="exportPatch()"
+               (openPatch)="importPatch()"
+               (zoomIn)="zoomIn()"
+               (zoomOut)="zoomOut()"
                (toggleFiles)="toggleFiles()"
-               (toggleInspector)="toggleInspector()"
-               (scaleChange)="setScale($event)">
+               (toggleInspector)="toggleInspector()">
 </app-title-bar>
 
 <div class="content">

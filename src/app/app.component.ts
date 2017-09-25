@@ -56,6 +56,14 @@ export class AppComponent implements OnInit {
     this.initPatch();
   }
 
+  zoomIn() {
+    this.editorState.zoomIn();
+  }
+
+  zoomOut() {
+    this.editorState.zoomOut();
+  }
+
   setScale(value: number) {
     this.editorState.setScale(value);
   }
@@ -76,24 +84,18 @@ export class AppComponent implements OnInit {
     this.editorState.setNotes(notes);
   }
 
-  setNumMother32s(count: number) {
-    if (count < 1 || count > 3) {
-      return;
-    }
-  }
-
   initPatch() {
     this.editorState.init();
     this.mother32State.init();
   }
 
-  // openPatch() {
-  //   this.file.openPatch();
-  // }
+  importPatch() {
+    this.file.importPatch();
+  }
 
-  // savePatchAs() {
-  //   this.file.savePatchAs();
-  // }
+  exportPatch() {
+    this.file.exportPatch();
+  }
 
   addMother32() {
     this.mother32State.addNew();

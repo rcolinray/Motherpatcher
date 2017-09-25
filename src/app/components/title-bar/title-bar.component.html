@@ -3,12 +3,33 @@
     <md-icon>list</md-icon>
   </button> -->
 
-  <span class="scale-desc mat-typography">{{scaleDesc}}</span>
-  <md-slider min="1.0" max="5.0" step="1.0" [value]="scale" (input)="scaleChange.emit($event.value)"></md-slider>
+  <button md-icon-button mdTooltip="Save Patch" (click)="savePatch.emit()">
+    <md-icon>save</md-icon>
+  </button>
+
+  <button md-icon-button mdTooltip="Open Patch" (click)="openPatch.emit()">
+    <md-icon>folder_open</md-icon>
+  </button>
+
+  <button md-icon-button mdTooltip="Reset Patch" color="warn" (click)="initPatch.emit()">
+    <md-icon>clear</md-icon>
+  </button>
 
   <span class="spacer"></span>
 
-  <button md-icon-button color="accent" (click)="toggleInspector.emit()">
+  <span class="scale-desc mat-typography">{{scaleDesc}}</span>
+
+  <button md-icon-button (click)="zoomIn.emit()" mdTooltip="Zoom In">
+    <md-icon>zoom_in</md-icon>
+  </button>
+
+  <button md-icon-button (click)="zoomOut.emit()" mdTooltip="Zoom Out">
+    <md-icon>zoom_out</md-icon>
+  </button>
+
+  <span class="spacer"></span>
+
+  <button md-icon-button color="accent" (click)="toggleInspector.emit()" mdTooltip="Inspector">
     <md-icon>info_outline</md-icon>
   </button>
 </md-toolbar>

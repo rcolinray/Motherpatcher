@@ -10,6 +10,7 @@ import {
   MdSliderModule,
   MdListModule,
   MatInputModule,
+  MdTooltipModule,
 } from '@angular/material';
 
 import { StoreModule } from '@ngrx/store';
@@ -77,6 +78,7 @@ import { InspectorComponent } from './components/inspector/inspector.component';
     MdSliderModule,
     MdListModule,
     MatInputModule,
+    MdTooltipModule,
     StoreModule.forRoot(reducers, { metaReducers }),
     !environment.production ? StoreDevtoolsModule.instrument() : [],
   ],

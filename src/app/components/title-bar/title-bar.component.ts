@@ -26,8 +26,12 @@ export class TitleBarComponent implements OnInit {
     return `${this.scale * 100}%`;
   }
 
-  @Output() scaleChange = new EventEmitter<number>();
-  @Output() toggleFiles = new EventEmitter();
+  @Output() initPatch = new EventEmitter();
+  @Output() savePatch = new EventEmitter();
+  @Output() openPatch = new EventEmitter();
+  @Output() zoomIn = new EventEmitter();
+  @Output() zoomOut = new EventEmitter();
+  // @Output() toggleFiles = new EventEmitter();
   @Output() toggleInspector = new EventEmitter();
 
   constructor() { }

@@ -35,6 +35,20 @@ export class EditorStateService {
     this.store.dispatch(setNotesAction);
   }
 
+  zoomIn() {
+    const scale = getValue(this.scale$);
+    if (scale < 5) {
+      this.setScale(scale + 1);
+    }
+  }
+
+  zoomOut() {
+    const scale = getValue(this.scale$);
+    if (scale > 1) {
+      this.setScale(scale - 1);
+    }
+  }
+
   setScale(scale: number) {
     const oldScale = getValue(this.scale$);
     if (scale === oldScale) {
