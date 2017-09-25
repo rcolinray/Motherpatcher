@@ -31,7 +31,8 @@ export function deserializePatch(data: string): Patch | null {
   }
 }
 
-export function loadPatch(patch: Patch,
+export function loadPatch(filename: string,
+                          patch: Patch,
                           editorState: EditorStateService,
                           mother32State: Mother32StateService,
                           cableState: CableStateService) {
@@ -41,6 +42,7 @@ export function loadPatch(patch: Patch,
     mother32State.remove(mother32.id);
   }
 
+  editorState.setFilename(filename);
   editorState.setName(patch.name);
   editorState.setNotes(patch.notes);
 
