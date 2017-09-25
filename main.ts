@@ -1,6 +1,7 @@
 import {
   app,
   BrowserWindow,
+  screen,
 } from 'electron';
 
 import * as path from 'path';
@@ -16,11 +17,12 @@ if (serve) {
 
 function createWindow() {
 
+  const size = screen.getPrimaryDisplay().workAreaSize;
   const options = {
     x: 0,
     y: 0,
-    width: 800,
-    height: 600,
+    width: 934, // 2 * MOTHER32SVG_HEIGHT
+    height: size.height,
   };
 
   // Create the browser window.
