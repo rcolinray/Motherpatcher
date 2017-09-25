@@ -19,15 +19,9 @@ function createWindow() {
   const options = {
     x: 0,
     y: 0,
-    width: 1280,
-    height: 768,
-    frame: false,
-    titleBarStyle: undefined,
+    width: 800,
+    height: 600,
   };
-
-  if (process.platform === 'darwin') {
-    options.titleBarStyle = 'hiddenInset';
-  }
 
   // Create the browser window.
   win = new BrowserWindow(options);

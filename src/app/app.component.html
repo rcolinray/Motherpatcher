@@ -3,19 +3,30 @@
                (toggleFiles)="toggleFiles()"
                (toggleInspector)="toggleInspector()"
                (scaleChange)="setScale($event)">
-
 </app-title-bar>
-<md-sidenav-container>
 
-    <md-sidenav mode="side" [opened]="showFiles$ | async">
+<div class="content">
+  <md-sidenav-container>
+
+    <!-- <md-sidenav mode="side" [opened]="showFiles$ | async">
       <app-file-hierarchy></app-file-hierarchy>
-    </md-sidenav>
+    </md-sidenav> -->
+
     <app-editor [mother32s]="mother32s$ | async"
                 [scale]="scale$ | async"
                 [unpairedConnection]="unpairedConnection$ | async">
     </app-editor>
 
-    <md-sidenav mode="side" position="end" [opened]="showInspector$ | async">
-      <app-inspector></app-inspector>
+    <md-sidenav class="right-sidenav" mode="side" position="end" [opened]="showInspector$ | async">
+      <app-inspector [name]="name$ | async"
+                     [numMother32s]="numMother32s$ | async"
+                     [notes]="notes$ | async"
+                     (nameChange)="setName($event)"
+                     (notesChange)="setNotes($event)"
+                     (addMother32)="addMother32()"
+                     (removeMother32)="removeMother32()">
+      </app-inspector>
     </md-sidenav>
-</md-sidenav-container>
+
+  </md-sidenav-container>
+</div>

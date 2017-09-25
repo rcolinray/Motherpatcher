@@ -1,0 +1,23 @@
+:host {
+  display: block;
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  right: 0px;
+  bottom: 0px;
+  margin: 64px 0 0 0;
+}
+
+.content {
+  display: block;
+  height: 100%;
+}
+
+md-sidenav-container {
+  height: 100%;
+}
+
+md-sidenav.right-sidenav {
+  box-shadow: -3px 0 6px rgba(0, 0, 0, .24);
+  padding: 16px;
+}

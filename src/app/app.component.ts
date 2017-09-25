@@ -45,6 +45,7 @@ export class AppComponent implements OnInit {
     this.name$ = this.editorState.name$;
     this.notes$ = this.editorState.notes$;
     this.mother32s$ = this.mother32State.mother32s$;
+    this.numMother32s$ = this.mother32s$.map((mother32s) => mother32s.length);
     this.scale$ = this.editorState.scale$;
     this.unpairedConnection$ = this.cableState.unpairedConnection$;
     this.showFiles$ = this.editorState.showFiles$;
@@ -67,26 +68,32 @@ export class AppComponent implements OnInit {
     this.editorState.toggleInspector();
   }
 
-  // setName(event: Event) {
-  //   this.editorState.setName((event.target as any).value);
-  // }
+  setName(name: string) {
+    this.editorState.setName(name);
+  }
 
-  // setNotes(event: Event) {
-  //   this.editorState.setNotes((event.target as any).value);
-  // }
+  setNotes(notes: string) {
+    this.editorState.setNotes(notes);
+  }
+
+  setNumMother32s(count: number) {
+    if (count < 1 || count > 3) {
+      return;
+    }
+  }
 
   initPatch() {
     this.editorState.init();
     this.mother32State.init();
   }
 
-  openPatch() {
-    this.file.openPatch();
-  }
+  // openPatch() {
+  //   this.file.openPatch();
+  // }
 
-  savePatchAs() {
-    this.file.savePatchAs();
-  }
+  // savePatchAs() {
+  //   this.file.savePatchAs();
+  // }
 
   addMother32() {
     this.mother32State.addNew();

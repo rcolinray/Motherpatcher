@@ -22,6 +22,10 @@ export class TitleBarComponent implements OnInit {
   @Input() title: string;
   @Input() scale: number;
 
+  get scaleDesc(): string {
+    return `${this.scale * 100}%`;
+  }
+
   @Output() scaleChange = new EventEmitter<number>();
   @Output() toggleFiles = new EventEmitter();
   @Output() toggleInspector = new EventEmitter();

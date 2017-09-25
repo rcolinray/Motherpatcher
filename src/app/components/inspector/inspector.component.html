@@ -1,3 +1,33 @@
-<p>
-  inspector works!
-</p>
+<div>
+  <md-form-field>
+    <input mdInput
+           placeholder="Patch Name"
+           [value]="name"
+           (change)="nameChange.emit($event.target.value)">
+  </md-form-field>
+</div>
+<div>
+  <md-form-field>
+    <input mdInput
+           disabled
+           type="number"
+           placeholder="# of Mother-32s"
+           [value]="numMother32s">
+    <button md-icon-button mdSuffix (click)="addMother32.emit()">
+      <md-icon>add</md-icon>
+    </button>
+    <button md-icon-button mdSuffix (click)="removeMother32.emit()">
+      <md-icon>remove</md-icon>
+    </button>
+  </md-form-field>
+</div>
+<div>
+  <md-form-field>
+    <textarea mdInput
+              mdTextareaAutosize
+              placeholder="Notes"
+              [value]="notes"
+              (change)="notesChange.emit($event.target.value)">
+    </textarea>
+  </md-form-field>
+</div>
