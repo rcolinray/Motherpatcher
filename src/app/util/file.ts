@@ -123,6 +123,10 @@ export type Node = File | Directory;
 export async function readTree(root: string, extension?: string): Promise<Node | null> {
   const stats = await lstat(root);
   if (!stats.isDirectory()) {
+    if (extension && path.extname(root) !== extension) {
+      return null
+    }
+
     return {
       type: 'file',
       path: root,
@@ -132,12 +136,8 @@ export async function readTree(root: string, extension?: string): Promise<Node |
   const children = [];
   const files = await readDir(root);
   for (let file of files) {
-    if (extension && path.extname(file) !== extension) {
-      continue;
-    }
-
     const fullPath = path.join(root, file);
-    const node = await readTree(fullPath);
+    const node = await readTree(fullPath, extension);
     if (node === null) {
       continue;
     }
