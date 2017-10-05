@@ -10,7 +10,7 @@ import {
   Node,
 } from './file';
 
-const libraryDirName = 'Patches';
+const libraryDirName = 'Mother-32 Patches';
 const patchExt = '.m32';
 
 export async function ensureLibraryExists(): Promise<void> {
@@ -23,7 +23,7 @@ export async function ensureLibraryExists(): Promise<void> {
 }
 
 export function getLibraryPath(): string {
-  const userDataPath = remote.app.getPath('userData');
+  const userDataPath = remote.app.getPath('documents');
   return path.join(userDataPath, libraryDirName);
 }
 
