@@ -25,12 +25,6 @@ import {
   writeFile,
 } from '../util/file';
 
-import {
-  ensureLibraryExists,
-  getLibrary,
-  getLibraryPath,
-} from '../util/library';
-
 import { getValue } from '../util/observable';
 
 import * as path from 'path';
@@ -42,13 +36,6 @@ export class FileService {
               private mother32State: Mother32StateService,
               private cableState: CableStateService,
               private zone: NgZone) {
-    ensureLibraryExists()
-      .then(getLibrary);
-  }
-
-  async openPatch(patchPath: string): Promise<void> {
-    const fullPath = path.join(getLibraryPath(), patchPath);
-    await this.readPatch(fullPath);
   }
 
   private async readPatch(filepath: string): Promise<void> {
@@ -60,18 +47,6 @@ export class FileService {
     catch (err) {
       console.log(err);
     }
-  }
-
-  async savePatch(): Promise<void> {
-    let filename = getValue(this.editorState.filename$);
-    if (filename === null) {
-      // TODO: make sure the user can't muck with the path? need to sanitize/validate
-      const name = getValue(this.editorState.name$);
-      // TODO: patch library subdirectories?
-      filename = path.join(getLibraryPath(), name);
-      this.editorState.setFilename(filename);
-    }
-    await this.writePatch(filename);
   }
 
   private async writePatch(filepath: string): Promise<void> {
